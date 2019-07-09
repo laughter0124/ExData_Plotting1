@@ -31,7 +31,28 @@ data$Time <-
 data$Date <- as.Date(dmy(data$Date))
 
 # plotting
-png("plot3.png")
+png("plot4.png")
+par(mfrow=c(2,2))
+
+# 1
+plot(
+        data$Time,
+        data$Global_active_power,
+        type = "l",
+        xlab = "",
+        ylab = "Global Active Power (kilowatts)"
+)
+
+# 2
+plot(
+        data$Time,
+        data$Voltage,
+        type = "l",
+        xlab = "datetime",
+        ylab = "Voltage"
+)
+
+# 3
 plot(
         data$Time,
         data$Sub_metering_1,
@@ -49,8 +70,19 @@ points(data$Time,
        col = "blue")
 legend(
         "topright",
+        box.col="white",
         lty = 1,
         col = c("black", "red", "blue"),
         c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
 )
+
+# 4
+plot(
+        data$Time,
+        data$Global_reactive_power,
+        type = "l",
+        xlab = "datetime",
+        ylab = "Global_reactive_power"
+)
+
 dev.off()
